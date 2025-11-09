@@ -1,25 +1,31 @@
-# API de Gestión de Residuos - Proyecto de Grado
+# API Backend - Plataforma de Gestión de Residuos
 
-Este repositorio contiene el código fuente del backend para la "Plataforma tecnológica para optimizar la gestión de residuos sólidos en Bogotá". La API está construida con Node.js, Express y PostgreSQL.
+Este repositorio contiene el código fuente del **servicio de backend** para el proyecto "Plataforma tecnológica para optimizar la gestión de residuos sólidos en Bogotá".
 
-## Características
+Esta API RESTful es la responsable de gestionar toda la lógica de negocio, la interacción con la base de datos y la seguridad de la aplicación. Está diseñada para ser consumida por uno o varios clientes, como una aplicación web (frontend) o una aplicación móvil.
 
-*   **Autenticación de Usuarios:** Sistema de registro y login seguro usando JSON Web Tokens (JWT).
-*   **Gestión de Roles:** Diferenciación entre usuarios 'ciudadano' y 'reciclador'.
-*   **CRUD de Reportes:** Endpoints para crear, leer, actualizar y eliminar reportes de residuos.
-*   **Rutas Protegidas:** Uso de middleware para asegurar que solo usuarios autenticados y/o con roles específicos puedan realizar ciertas acciones.
+> **Nota:** El código fuente del frontend se encuentra en un repositorio separado para mantener un desarrollo desacoplado y organizado.
+>
+> **Repositorio del Frontend:** `[ENLACE AL REPOSITORIO DEL FRONTEND CUANDO EXISTA]`
+
+## Características del Backend
+
+*   **Autenticación Segura:** Sistema de registro y login basado en JSON Web Tokens (JWT) con encriptación de contraseñas (bcrypt).
+*   **Gestión de Roles:** Diferenciación entre usuarios 'ciudadano' y 'reciclador' para control de acceso a funcionalidades específicas.
+*   **CRUD de Reportes:** Endpoints completos para crear, leer, actualizar y eliminar reportes de residuos.
+*   **API RESTful:** Sigue los principios de diseño REST para una comunicación predecible y estandarizada.
 
 ## Tecnologías Utilizadas
 
 *   **Runtime:** Node.js
 *   **Framework:** Express.js
 *   **Base de Datos:** PostgreSQL
-*   **Autenticación:** JSON Web Tokens (JWT), bcrypt.js
-*   **Driver de DB:** node-postgres (pg)
+*   **Autenticación:** JSON Web Tokens (`jsonwebtoken`), `bcrypt.js`
+*   **Driver de DB:** node-postgres (`pg`)
 
 ## Instalación y Puesta en Marcha
 
-Sigue estos pasos para levantar el entorno de desarrollo local.
+Sigue estos pasos para levantar el entorno de desarrollo local del backend.
 
 ### Prerrequisitos
 
@@ -45,8 +51,7 @@ Sigue estos pasos para levantar el entorno de desarrollo local.
     *   Ejecuta el script `database.sql` que se encuentra en la raíz del proyecto para crear las tablas necesarias.
 
 4.  **Configurar variables de entorno:**
-    *   Crea un archivo `.env` en la raíz del proyecto.
-    *   Copia el contenido del archivo `.env.example` (si lo tienes) o añade las siguientes variables, reemplazando los valores con tus credenciales:
+    *   Crea un archivo `.env` en la raíz del proyecto y añade las siguientes variables, reemplazando los valores con tus credenciales:
     ```
     PORT=3000
     DB_USER=postgres
@@ -54,18 +59,18 @@ Sigue estos pasos para levantar el entorno de desarrollo local.
     DB_DATABASE=residuos_db
     DB_PASSWORD=tu_contraseña_secreta
     DB_PORT=5432
-    JWT_SECRET=un_secreto_muy_largo
+    JWT_SECRET=un_secreto_muy_largo_y_dificil_de_adivinar
     ```
 
 5.  **Iniciar el servidor de desarrollo:**
     ```bash
     npm run dev
     ```
-    El servidor estará corriendo en `http://localhost:3000`.
+    La API estará escuchando peticiones en `http://localhost:3000`.
 
-## Documentación de la API
+## Documentación de Endpoints
 
-Puedes usar las siguientes rutas para probar los endpoints:
+A continuación se detallan los endpoints disponibles en esta API.
 
 ### Autenticación (`/api/auth`)
 
