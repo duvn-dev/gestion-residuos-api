@@ -18,9 +18,12 @@
         <div class="right-column">
             <h2>Crear Nuevo Reporte</h2>
             <form id="reporte-form">
-                <input type="text" id="latitud" placeholder="Latitud (ej. 4.609710)" required><br>
-                <input type="text" id="longitud" placeholder="Longitud (ej. -74.081750)" required><br>
-                <input type="text" id="descripcion" placeholder="Descripción" required><br>
+                <input type="text" id="latitud" placeholder="Latitud (ej. 4.609710)" 
+                       aria-label="Latitud del reporte" required><br>
+                <input type="text" id="longitud" placeholder="Longitud (ej. -74.081750)" 
+                       aria-label="Longitud del reporte" required><br>
+                <input type="text" id="descripcion" placeholder="Descripción" 
+                       aria-label="Descripción del reporte" required><br>
                 <button type="submit">Crear Reporte</button>
             </form>
             <div id="response-reporte"></div>

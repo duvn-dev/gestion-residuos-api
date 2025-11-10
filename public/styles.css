@@ -7,11 +7,17 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    /* PEQUEÑO AÑADIDO PARA EVITAR BARRAS DE SCROLL INNECESARIAS */
+    box-sizing: border-box; 
 }
 
 /* --- Contenedor Principal --- */
 .container {
     width: 400px;
+    /* AÑADIDO: Asegura que en pantallas muy pequeñas, el contenedor no se desborde */
+    max-width: 100%;
+    padding: 1em; /* Añade un poco de espacio en los bordes para móviles */
+    box-sizing: border-box;
 }
 
 h1 {
@@ -87,6 +93,8 @@ button {
     width: 100%;
     max-width: 1200px;
     padding: 2em;
+    /* AÑADIDO: Asegura que el dashboard también se comporte bien */
+    box-sizing: border-box;
 }
 
 .dashboard-layout .left-column {
@@ -144,8 +152,8 @@ button {
 
 /* --- Media Query para pantallas más grandes (Desktop First) --- */
 
-/* Aplicar estos estilos CUANDO el ancho de la pantalla sea 769px O MÁS */
-@media (min-width: 769px) {
+/* Aplicar estos estilos CUANDO el ancho de la pantalla sea 768px O MÁS (antes 769px) */
+@media (min-width: 768px) {
     
     .dashboard-layout {
         /* SOLO en pantallas grandes, cambiamos a dos columnas */
@@ -162,5 +170,75 @@ button {
     .dashboard-layout h1 {
         /* Este truco empuja el botón hacia abajo */
         margin-bottom: auto; 
+    }
+}
+
+/* --- MEJORAS DE ACCESIBILIDAD --- */
+
+/* Mejorar contraste para mensajes de error */
+#response, #response-reporte {
+    color: #d00; /* Rojo más oscuro para mejor contraste */
+}
+
+/* Estilos de foco para navegación con teclado */
+input:focus,
+select:focus,
+button:focus {
+    outline: 2px solid #005fcc;
+    outline-offset: 2px;
+}
+
+/* --- MEJORAS RESPONSIVE --- */
+
+/* Breakpoint para tablets */
+@media (max-width: 768px) {
+    .dashboard-layout {
+        padding: 1em;
+        gap: 1.5em;
+    }
+    
+    .dashboard-layout h1 {
+        font-size: 2.2em;
+    }
+    
+    #reporte-form input {
+        margin-bottom: 0.8em;
+    }
+}
+
+/* Para móviles muy pequeños */
+@media (max-width: 360px) {
+    .container {
+        padding: 0.5em;
+    }
+    
+    .form-group {
+        padding: 1em;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+}
+
+/* Mejorar legibilidad en pantallas grandes */
+@media (min-width: 1400px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Optimizar renderizado para móviles */
+.dashboard-layout {
+    transform: translateZ(0); /* Acelerar hardware */
+}
+
+/* Prevenir zoom no deseado en iOS */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+        font-size: 16px; /* Previene zoom automático en iOS */
     }
 }
