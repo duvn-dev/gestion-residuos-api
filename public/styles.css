@@ -1,0 +1,166 @@
+/* --- Estilos Generales --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* --- Contenedor Principal --- */
+.container {
+    width: 400px;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: normal;
+    color: #000;
+    margin-bottom: 1.5em;
+}
+
+/* --- Grupo de Formulario (Label + Input) --- */
+.form-group {
+    border: 1px solid #000;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #000;
+    display: block; /* Para que ocupe su propia línea */
+    margin-bottom: 0.8em;
+}
+
+/* --- Campos de Entrada y Select --- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #000;
+    font-size: 1em;
+    box-sizing: border-box; /* Importante para que el padding no afecte el ancho */
+}
+
+/* --- Botón de Envío --- */
+button {
+    width: 100%;
+    padding: 1.2em;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+/* --- Enlace Inferior y Mensajes de Respuesta --- */
+.navigation-link {
+    margin-top: 2em;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+.navigation-link a {
+    color: #000;
+}
+
+#response {
+    margin-top: 1em;
+    font-weight: bold;
+}
+
+
+/* --- Estilos específicos para el Dashboard --- */
+.dashboard-layout {
+    display: grid;
+    /* Por defecto, UNA SOLA COLUMNA */
+    grid-template-columns: 1fr; 
+    gap: 2em; /* Un espacio más pequeño por defecto */
+    width: 100%;
+    max-width: 1200px;
+    padding: 2em;
+}
+
+.dashboard-layout .left-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-layout h1 {
+    font-size: 3em;
+    margin-bottom: auto; /* Empuja el botón hacia abajo */
+}
+
+.dashboard-layout button#logout-btn {
+    width: 100%;
+    padding: 1.2em;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+.dashboard-layout .right-column h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+#reporte-form {
+    border: 1px solid #000;
+    padding: 1.5em;
+    margin-bottom: 2em;
+}
+
+#reporte-form input {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #000;
+    font-size: 1em;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+}
+
+#reporte-form button {
+    width: auto; /* El botón no ocupa todo el ancho */
+    padding: 0.8em 1.5em;
+}
+
+#reportes-list .reporte-item {
+    margin-bottom: 1em;
+    line-height: 1.6;
+}
+
+/* --- Media Query para pantallas más grandes (Desktop First) --- */
+
+/* Aplicar estos estilos CUANDO el ancho de la pantalla sea 769px O MÁS */
+@media (min-width: 769px) {
+    
+    .dashboard-layout {
+        /* SOLO en pantallas grandes, cambiamos a dos columnas */
+        grid-template-columns: 1fr 2fr;
+        gap: 4em; /* Volvemos al espacio más grande */
+    }
+
+    .dashboard-layout .left-column {
+        /* Usamos flexbox para alinear el botón de logout abajo */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dashboard-layout h1 {
+        /* Este truco empuja el botón hacia abajo */
+        margin-bottom: auto; 
+    }
+}

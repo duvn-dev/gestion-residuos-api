@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Reportes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Columna Izquierda -->
+        <div class="left-column">
+            <h1>Dashboard de Reportes</h1>
+            <button id="logout-btn">Cerrar Sesión</button>
+        </div>
+
+        <!-- Columna Derecha -->
+        <div class="right-column">
+            <h2>Crear Nuevo Reporte</h2>
+            <form id="reporte-form">
+                <input type="text" id="latitud" placeholder="Latitud (ej. 4.609710)" required><br>
+                <input type="text" id="longitud" placeholder="Longitud (ej. -74.081750)" required><br>
+                <input type="text" id="descripcion" placeholder="Descripción" required><br>
+                <button type="submit">Crear Reporte</button>
+            </form>
+            <div id="response-reporte"></div>
+
+            <h2>Lista de Reportes</h2>
+            <div id="reportes-list">Cargando reportes...</div>
+        </div>
+    </div>
+
+    <script>
+        // El JavaScript de la versión anterior funciona aquí sin cambios.
+        const token = localStorage.getItem('jwtToken');
+        const reportesListDiv = document.getElementById('reportes-list');
+        const responseReporteDiv = document.getElementById('response-reporte');
+
+        async function cargarReportes() {
+            try {
+                const response = await fetch('/api/reportes');
+                const reportes = await response.json();
+                
+                reportesListDiv.innerHTML = '';
+                if (reportes.length === 0) {
+                    reportesListDiv.textContent = 'No hay reportes disponibles.';
+                    return;
+                }
+
+                reportes.forEach(reporte => {
+                    const reporteEl = document.createElement('div');
+                    reporteEl.className = 'reporte-item';
+                    reporteEl.innerHTML = `
+                        <strong>ID: ${reporte.id} - Estado: ${reporte.estado}</strong><br>
+                        ${reporte.descripcion}
+                    `;
+                    reportesListDiv.appendChild(reporteEl);
+                });
+
+            } catch (error) {
+                reportesListDiv.textContent = 'Error al cargar los reportes.';
+            }
+        }
+        
+        if (!token) {
+            window.location.href = '/login.html';
+        } else {
+            cargarReportes();
+        }
+
+        document.getElementById('reporte-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const latitud = document.getElementById('latitud').value;
+            const longitud = document.getElementById('longitud').value;
+            const descripcion = document.getElementById('descripcion').value;
+            
+            try {
+                const response = await fetch('/api/reportes', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}` 
+                    },
+                    body: JSON.stringify({ latitud, longitud, descripcion })
+                });
+
+                const data = await response.json();
+                if(response.ok) {
+                    responseReporteDiv.style.color = 'green';
+                    responseReporteDiv.textContent = 'Reporte creado con éxito!';
+                    document.getElementById('reporte-form').reset(); // Limpiar el formulario
+                    cargarReportes();
+                } else {
+                    responseReporteDiv.style.color = 'red';
+                    responseReporteDiv.textContent = 'Error: ' + data.message;
+                }
+
+            } catch (error) {
+                 responseReporteDiv.style.color = 'red';
+                 responseReporteDiv.textContent = 'Error de conexión.';
+            }
+        });
+
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            localStorage.removeItem('jwtToken');
+            window.location.href = '/login.html';
+        });
+    </script>
+</body>
+</html>

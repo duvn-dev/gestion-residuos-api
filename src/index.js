@@ -10,6 +10,7 @@ dotenv.config();
 // 3. Crear una instancia de nuestra aplicación Express
 const app = express();
 app.use(express.json()); // Middleware para parsear bodies de peticiones en formato JSON
+app.use(express.static('public'));
 
 // 4. Definir el puerto. process.env.PORT viene del archivo .env
 const PORT = process.env.PORT || 4000; // Si no encuentra el puerto en .env, usa el 4000
