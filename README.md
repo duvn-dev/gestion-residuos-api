@@ -4,7 +4,7 @@ Este repositorio contiene el código fuente del **servicio de backend** para el 
 
 Esta API RESTful es la responsable de gestionar toda la lógica de negocio, la interacción con la base de datos y la seguridad de la aplicación. Está diseñada para ser consumida por uno o varios clientes, como una aplicación web (frontend) o una aplicación móvil.
 
-> **Nota:** El código fuente del frontend se encuentra en un repositorio separado para mantener un desarrollo desacoplado y organizado.
+> **Nota:** El código fuente del frontend final en React se encuentra en un repositorio separado para mantener un desarrollo desacoplado y organizado.
 >
 > **Repositorio del Frontend:** `[ENLACE AL REPOSITORIO DEL FRONTEND CUANDO EXISTA]`
 
@@ -13,6 +13,7 @@ Esta API RESTful es la responsable de gestionar toda la lógica de negocio, la i
 *   **Autenticación Segura:** Sistema de registro y login basado en JSON Web Tokens (JWT) con encriptación de contraseñas (bcrypt).
 *   **Gestión de Roles:** Diferenciación entre usuarios 'ciudadano' y 'reciclador' para control de acceso a funcionalidades específicas.
 *   **CRUD de Reportes:** Endpoints completos para crear, leer, actualizar y eliminar reportes de residuos.
+*   **Cliente de Prueba Incluido:** Incluye un frontend simple en HTML y JavaScript para demostración y validación rápida de la API.
 *   **API RESTful:** Sigue los principios de diseño REST para una comunicación predecible y estandarizada.
 
 ## Tecnologías Utilizadas
@@ -40,6 +41,7 @@ Sigue estos pasos para levantar el entorno de desarrollo local del backend.
     git clone https://github.com/TuUsuario/gestion-residuos-api.git
     cd gestion-residuos-api
     ```
+    *(Reemplaza `TuUsuario` con tu nombre de usuario de GitHub)*
 
 2.  **Instalar dependencias:**
     ```bash
@@ -68,9 +70,25 @@ Sigue estos pasos para levantar el entorno de desarrollo local del backend.
     ```
     La API estará escuchando peticiones en `http://localhost:3000`.
 
+## Cliente de Prueba HTML
+
+Este repositorio incluye un cliente web simple ubicado en la carpeta `/public` para facilitar las pruebas y la demostración visual de la API sin necesidad de configurar el frontend completo.
+
+Una vez que el servidor esté corriendo (`npm run dev`), puedes acceder a las siguientes páginas desde tu navegador:
+
+*   **Registro:** `http://localhost:3000/registro.html`
+*   **Login:** `http://localhost:3000/login.html`
+*   **Dashboard (requiere login):** `http://localhost:3000/dashboard.html`
+
+### Capturas de Pantalla
+
+| Registro de Usuario | Inicio de Sesión | Dashboard de Reportes |
+| :---: | :---: | :---: |
+| ![Página de Registro](./docs/images/registro.png) | ![Página de Login](./docs/images/login.png) | ![Página de Dashboard](./docs/images/dashboard.png) |
+
 ## Documentación de Endpoints
 
-A continuación se detallan los endpoints disponibles en esta API.
+A continuación se detallan los endpoints disponibles en esta API, que pueden ser probados con herramientas como Postman o a través del cliente de prueba.
 
 ### Autenticación (`/api/auth`)
 
