@@ -72,9 +72,11 @@ Sigue estos pasos para levantar el entorno de desarrollo local del backend.
 
 ## Cliente de Prueba HTML
 
-Este repositorio incluye un cliente web simple ubicado en la carpeta `/public` para facilitar las pruebas y la demostración visual de la API sin necesidad de configurar el frontend completo.
+Para facilitar la validación y demostración del backend, este repositorio incluye un cliente web simple (Prueba de Concepto) ubicado en la carpeta `/public`.
 
-Una vez que el servidor esté corriendo (`npm run dev`), puedes acceder a las siguientes páginas desde tu navegador:
+Este cliente permite ejecutar el flujo completo de la aplicación (registro, login, creación de reportes) y sirve como una **validación inicial hacia el nivel TRL5**, demostrando que la API es completamente funcional y puede ser consumida por un cliente web. El cumplimiento del prototipo TRL5 final, según lo definido en el marco tecnológico del proyecto, se alcanzará con el desarrollo e integración del frontend en React.
+
+Una vez que el servidor esté corriendo (`npm run dev`), se puede interactuar con esta prueba de concepto a través de las siguientes páginas:
 
 *   **Registro:** `http://localhost:3000/registro.html`
 *   **Login:** `http://localhost:3000/login.html`
