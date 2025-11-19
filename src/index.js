@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 4000; // Si no encuentra el puerto en .env, usa
 // 5. Crear una ruta de prueba (un "endpoint")
 // Cuando alguien visite la URL raíz ('/'), le responderemos con un JSON.
 app.get('/', (req, res) => {
-  res.json({ message: '¡Mi primera API!' });
+  res.json({ message: '¡API!' });
 });
 
 // Importar las rutas de autenticación
