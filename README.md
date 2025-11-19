@@ -2,6 +2,9 @@
 
 Este repositorio contiene el código fuente del **servicio de backend** para el proyecto "Plataforma tecnológica para optimizar la gestión de residuos sólidos en Bogotá".
 
+**La API está desplegada en Render y se encuentra completamente funcional y accesible en la siguiente URL:**
+> ### **URL Base de la API: `https://gestion-residuos-api.onrender.com`**
+
 Esta API RESTful es la responsable de gestionar toda la lógica de negocio, la interacción con la base de datos y la seguridad de la aplicación. Está diseñada para ser consumida por uno o varios clientes, como una aplicación web (frontend) o una aplicación móvil.
 
 > **Nota:** El código fuente del frontend final en React se encuentra en un repositorio separado para mantener un desarrollo desacoplado y organizado.
@@ -21,76 +24,15 @@ Esta API RESTful es la responsable de gestionar toda la lógica de negocio, la i
 *   **Runtime:** Node.js
 *   **Framework:** Express.js
 *   **Base de Datos:** PostgreSQL
+*   **Despliegue:** Render
 *   **Autenticación:** JSON Web Tokens (`jsonwebtoken`), `bcrypt.js`
 *   **Driver de DB:** node-postgres (`pg`)
 
-## Instalación y Puesta en Marcha
-
-Sigue estos pasos para levantar el entorno de desarrollo local del backend.
-
-### Prerrequisitos
-
-*   Node.js (versión LTS recomendada)
-*   PostgreSQL
-*   Git
-
-### Pasos
-
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone https://github.com/TuUsuario/gestion-residuos-api.git
-    cd gestion-residuos-api
-    ```
-    *(Reemplaza `TuUsuario` con tu nombre de usuario de GitHub)*
-
-2.  **Instalar dependencias:**
-    ```bash
-    npm install
-    ```
-
-3.  **Configurar la base de datos:**
-    *   Crea una base de datos en PostgreSQL llamada `residuos_db`.
-    *   Ejecuta el script `database.sql` que se encuentra en la raíz del proyecto para crear las tablas necesarias.
-
-4.  **Configurar variables de entorno:**
-    *   Crea un archivo `.env` en la raíz del proyecto y añade las siguientes variables, reemplazando los valores con tus credenciales:
-    ```
-    PORT=3000
-    DB_USER=postgres
-    DB_HOST=localhost
-    DB_DATABASE=residuos_db
-    DB_PASSWORD=tu_contraseña_secreta
-    DB_PORT=5432
-    JWT_SECRET=un_secreto_muy_largo_y_dificil_de_adivinar
-    ```
-
-5.  **Iniciar el servidor de desarrollo:**
-    ```bash
-    npm run dev
-    ```
-    La API estará escuchando peticiones en `http://localhost:3000`.
-
-## Cliente de Prueba HTML
-
-Para facilitar la validación y demostración del backend, este repositorio incluye un cliente web simple (Prueba de Concepto) ubicado en la carpeta `/public`.
-
-Este cliente permite ejecutar el flujo completo de la aplicación (registro, login, creación de reportes) y sirve como una **validación inicial hacia el nivel TRL5**, demostrando que la API es completamente funcional y puede ser consumida por un cliente web. El cumplimiento del prototipo TRL5 final, según lo definido en el marco tecnológico del proyecto, se alcanzará con el desarrollo e integración del frontend en React.
-
-Una vez que el servidor esté corriendo (`npm run dev`), se puede interactuar con esta prueba de concepto a través de las siguientes páginas:
-
-*   **Registro:** `http://localhost:3000/registro.html`
-*   **Login:** `http://localhost:3000/login.html`
-*   **Dashboard (requiere login):** `http://localhost:3000/dashboard.html`
-
-### Capturas de Pantalla
-
-| Registro de Usuario | Inicio de Sesión | Dashboard de Reportes |
-| :---: | :---: | :---: |
-| ![Página de Registro](./docs/images/registro.png) | ![Página de Login](./docs/images/login.png) | ![Página de Dashboard](./docs/images/dashboard.png) |
-
 ## Documentación de Endpoints
 
-A continuación se detallan los endpoints disponibles en esta API, que pueden ser probados con herramientas como Postman o a través del cliente de prueba.
+A continuación se detallan los endpoints disponibles. **Todas las rutas deben ir precedidas de la URL base:** `https://gestion-residuos-api.onrender.com`
+
+**Ejemplo:** Para registrar un usuario, la petición POST se debe hacer a `https://gestion-residuos-api.onrender.com/api/auth/register`.
 
 ### Autenticación (`/api/auth`)
 
@@ -104,3 +46,49 @@ A continuación se detallan los endpoints disponibles en esta API, que pueden se
 *   `POST /`: Crea un nuevo reporte (Protegida, requiere token).
 *   `PUT /:id`: Actualiza un reporte (Protegida, requiere token de 'reciclador').
 *   `DELETE /:id`: Elimina un reporte (Protegida, requiere token del dueño o 'admin').
+
+---
+
+## Desarrollo Local (Opcional)
+
+Las siguientes instrucciones son para levantar un entorno de desarrollo local si se desea contribuir al código del backend.
+
+### Prerrequisitos
+
+*   Node.js (versión LTS recomendada)
+*   PostgreSQL
+*   Git
+
+### Pasos
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/duvn-dev/gestion-residuos-api.git
+    cd gestion-residuos-api
+    ```
+
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+
+3.  **Configurar la base de datos local:**
+    *   Crea una base de datos en PostgreSQL llamada `residuos_db`.
+    *   Ejecuta el script `database.sql` para crear las tablas.
+
+4.  **Configurar variables de entorno locales:**
+    *   Crea un archivo `.env` en la raíz y añade las variables necesarias (`PORT`, `DB_USER`, `DB_PASSWORD`, `JWT_SECRET`, etc.).
+
+5.  **Iniciar el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+    La API estará escuchando en `http://localhost:3000`.
+
+## Cliente de Prueba HTML (Para Desarrollo Local)
+
+Este repositorio incluye un cliente web simple en la carpeta `/public` para facilitar las pruebas locales. Una vez que el servidor local esté corriendo (`npm run dev`), puedes acceder a las siguientes páginas:
+
+*   **Registro:** `http://localhost:3000/registro.html`
+*   **Login:** `http://localhost:3000/login.html`
+*   **Dashboard:** `http://localhost:3000/dashboard.html`
