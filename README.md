@@ -85,7 +85,7 @@ Las siguientes instrucciones son para levantar un entorno de desarrollo local si
     ```
     La API estará escuchando en `http://localhost:3000`.
 
-## Cliente de Prueba HTML (Para Desarrollo Local)
+## Cliente de Prueba HTML 
 
 Este repositorio incluye un cliente web simple en la carpeta `/public` para facilitar las pruebas locales. Una vez que el servidor local esté corriendo (`npm run dev`), puedes acceder a las siguientes páginas:
 
