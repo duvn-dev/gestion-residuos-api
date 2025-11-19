@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import './db/database.js';
 import reportesRoutes from './routes/reportes.routes.js';
+import cors from 'cors';
 
 // 2. Configurar dotenv para que lea nuestro archivo .env
 dotenv.config();
@@ -32,3 +33,5 @@ app.use('/api/reportes', reportesRoutes);
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
+
+app.use(cors());
