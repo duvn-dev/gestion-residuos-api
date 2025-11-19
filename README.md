@@ -49,7 +49,7 @@ A continuación se detallan los endpoints disponibles. **Todas las rutas deben i
 
 ---
 
-## Desarrollo Local (Opcional)
+## Desarrollo Local 
 
 Las siguientes instrucciones son para levantar un entorno de desarrollo local si se desea contribuir al código del backend.
 
