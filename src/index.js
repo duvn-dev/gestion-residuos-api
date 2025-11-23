@@ -10,6 +10,7 @@ dotenv.config();
 
 // 3. Crear una instancia de nuestra aplicación Express
 const app = express();
+app.use(cors());
 app.use(express.json()); // Middleware para parsear bodies de peticiones en formato JSON
 app.use(express.static('public'));
 
@@ -34,4 +35,3 @@ app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
 
-app.use(cors());
