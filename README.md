@@ -9,7 +9,7 @@ Esta API RESTful es la responsable de gestionar toda la lógica de negocio, la i
 
 > **Nota:** El código fuente del frontend final en React se encuentra en un repositorio separado para mantener un desarrollo desacoplado y organizado.
 >
-> **Repositorio del Frontend:** `[ENLACE AL REPOSITORIO DEL FRONTEND CUANDO EXISTA]`
+> **Repositorio del Frontend:** `https://github.com/duvn-dev/gestion-residuos-frontend`
 
 ## Características del Backend
 
